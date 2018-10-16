@@ -62,22 +62,24 @@ Puppet::Type.type(:pkg_facet).provide(:solaris) do
 
   def defer(arg)
     Puppet.debug "Defering facet: #{arg}"
-    cv = Puppet::Type::Pkg_facet::ProviderPkg_facet.send(:class_variable_get, :@@classvars)
+    cv = Puppet::Type::Pkg_facet::ProviderSolaris.send(:class_variable_get, :@@classvars)
     cv[:changes].push arg
-    Puppet::Type::Pkg_facet::ProviderPkg_facet.send(:class_variable_set, :@@classvars, cv)
+    Puppet::Type::Pkg_facet::ProviderSolaris.send(:class_variable_set, :@@classvars, cv)
   end
 
   def self.post_resource_eval
     # Apply any stashed changes and remove the class variable
-    cv = Puppet::Type::Pkg_facet::ProviderPkg_facet.send(:class_variable_get, :@@classvars)
+    cv = Puppet::Type::Pkg_facet::ProviderSolaris.send(:class_variable_get, :@@classvars)
     # If changes have been stashed apply them
     unless cv[:changes].empty?
+    puts 'merp'
       Puppet.debug("Applying %s defered facet changes" % cv[:changes].length)
       pkg("change-facet", cv[:changes])
     end
 
+    puts 'byerp'
     # Cleanup our tracking class variable
-    Puppet::Type::Pkg_facet::ProviderPkg_facet.send(:remove_class_variable, :@@classvars)
+    Puppet::Type::Pkg_facet::ProviderSolaris.send(:remove_class_variable, :@@classvars)
   end
 
   # required puppet functions
