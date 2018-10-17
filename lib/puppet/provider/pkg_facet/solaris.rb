@@ -77,7 +77,6 @@ Puppet::Type.type(:pkg_facet).provide(:solaris) do
       pkg("change-facet", cv[:changes])
     end
 
-    puts 'byerp'
     # Cleanup our tracking class variable
     Puppet::Type::Pkg_facet::ProviderSolaris.send(:remove_class_variable, :@@classvars)
   end
