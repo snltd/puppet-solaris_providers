@@ -72,6 +72,7 @@ Puppet::Type.type(:pkg_facet).provide(:solaris) do
     cv = Puppet::Type::Pkg_facet::ProviderSolaris.send(:class_variable_get, :@@classvars)
     # If changes have been stashed apply them
     unless cv[:changes].empty?
+    puts 'merp'
       Puppet.debug("Applying %s defered facet changes" % cv[:changes].length)
       pkg("change-facet", cv[:changes])
     end
