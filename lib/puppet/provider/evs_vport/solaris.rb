@@ -17,7 +17,7 @@
 
 Puppet::Type.type(:evs_vport).provide(:solaris) do
   desc "Provider for managing EVS VPort setup in the Solaris OS"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ["5.11", "5.12"]
   commands :evsadm => "/usr/sbin/evsadm"
 

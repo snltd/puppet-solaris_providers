@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:ilb_rule).provide(:solaris) do
   @doc = "Provider to manage Solaris Integrated Load Balancer (ILB) rule configuration."
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :ilbadm => '/usr/sbin/ilbadm'
 

@@ -20,7 +20,7 @@ Puppet::Type.type(:nis).provide(:solaris,
                                 Puppet::Type.type(:svccfg).provider(:solaris)) do
 
   desc "Provider for management of NIS client for Oracle Solaris"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :svccfg => '/usr/sbin/svccfg', :svcprop => '/usr/bin/svcprop'
 

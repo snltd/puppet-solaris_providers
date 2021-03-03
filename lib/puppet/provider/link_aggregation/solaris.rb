@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:link_aggregation).provide(:solaris) do
   desc "Provider for creating Oracle Solaris link aggregations"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :dladm => '/usr/sbin/dladm'
 

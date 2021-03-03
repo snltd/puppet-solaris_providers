@@ -17,7 +17,7 @@
 Puppet::Type.type(:zfs_acl).provide(:solaris) do
   Ace = Puppet::Type::ZfsAcl::Ace
   desc "Provider for management of ZFS ACLs for Oracle Solaris"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :chmod => '/usr/bin/chmod', :ls => '/usr/bin/ls'
 

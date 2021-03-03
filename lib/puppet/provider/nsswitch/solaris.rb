@@ -18,7 +18,7 @@ Puppet::Type.type(:nsswitch).provide(:solaris,
                              :parent =>
                              Puppet::Type.type(:svccfg).provider(:solaris)) do
   desc "Provider for name service switch configuration data"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :svccfg => '/usr/sbin/svccfg', :svcprop => '/usr/bin/svcprop'
 

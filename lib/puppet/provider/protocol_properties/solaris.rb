@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:protocol_properties).provide(:solaris) do
   desc "Provider for managing Oracle Solaris protocol object properties"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :ipadm => '/usr/sbin/ipadm'
 

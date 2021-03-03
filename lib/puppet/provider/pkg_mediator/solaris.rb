@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:pkg_mediator).provide(:solaris) do
   desc "Provider for Oracle Solaris mediators"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :pkg => '/usr/bin/pkg'
   mk_resource_methods

@@ -34,15 +34,15 @@ Puppet::Type.type(:svccfg).provide(:solaris) do
     end
   end
 
-  def self.smartos?
-    IO.read('/etc/release') =~ /SmartOS/
+  def self.illumos?
+    IO.read('/etc/release') =~ /Solaris/ ? false : true
   end
 
   def self.instances
     svcs = Hash.new {|h,k| h[k] = [] }
     # "prop_fmri" => [ "fmri", "property", "type", "value" ]
 
-    svcprop_args = self.smartos? ? %w[-f *] : %w[-a -f *]
+    svcprop_args = self.illumos? ? %w[-f *] : %w[-a -f *]
 
     svcprop(svcprop_args).each_line do |line|
       if line.encode!(:invalid => :replace).start_with?('svc:')

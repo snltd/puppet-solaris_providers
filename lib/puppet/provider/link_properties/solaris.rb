@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:link_properties).provide(:solaris) do
   desc "Provider for managing Oracle Solaris link properties"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :dladm => '/usr/sbin/dladm'
 

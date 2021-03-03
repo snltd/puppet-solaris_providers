@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:ip_tunnel).provide(:solaris) do
   desc "Provider for managing Oracle Solaris IP Tunnel links"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :dladm => '/usr/sbin/dladm'
 

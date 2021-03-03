@@ -16,7 +16,7 @@
 
 Puppet::Type.type(:ipmp_interface).provide(:solaris) do
   desc "Provider for management of IPMP interfaces for Oracle Solaris"
-  confine :operatingsystem => [:solaris]
+  confine :operatingsystem => [:omnios, :solaris]
   defaultfor :osfamily => :solaris, :kernelrelease => ['5.11', '5.12']
   commands :ipadm => '/usr/sbin/ipadm'
 
